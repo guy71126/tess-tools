@@ -11,7 +11,7 @@ The project follows semantic versioning after the initial alpha release.
 - Cross-platform continuous integration and release automation.
 - Public contribution, citation, security, and release documentation.
 
-## [0.1.0] - Unreleased
+## [0.1.0] - 2026-07-11
 
 ### Added
 

@@ -8,6 +8,7 @@ repository-code: "https://github.com/guy71126/tess-tools"
 url: "https://github.com/guy71126/tess-tools"
 license: MIT
 version: 0.1.0
+date-released: 2026-07-11
 keywords:
   - TESS
   - astronomy
