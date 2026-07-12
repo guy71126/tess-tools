@@ -1,0 +1,251 @@
+{
+  "schema_version": "tess-where.live-targets.v0.1",
+  "targets": [
+    {
+      "name": "cvz-coordinate-tesscut",
+      "target": ["102.7", "-70.5"],
+      "providers": "tesscut",
+      "best_for": "general",
+      "expect": {
+        "min_sectors": 20,
+        "fetch_product": "cutout",
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "skipped"
+        },
+        "no_errors": true
+      },
+      "fetch_smoke": {
+        "product": "cutout",
+        "file_role": "cutout",
+        "sectors": [2],
+        "max_files": 1,
+        "normalize_csv": false,
+        "cutout_lightcurve_csv": true,
+        "cutout_background": "median-outside",
+        "expect_min_rows": 1,
+        "expect_columns": ["time_btjd", "flux", "quality", "raw_aperture_flux", "aperture_n_pixels"]
+      }
+    },
+    {
+      "name": "tic-direct-resolution-tesscut",
+      "target": ["TIC", "261136679"],
+      "providers": "tesscut",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "261136679",
+        "target_source_contains": "mast.catalogs.filtered.tic.http",
+        "min_sectors": 20,
+        "fetch_product": "cutout",
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "skipped"
+        },
+        "no_errors": true
+      }
+    },
+    {
+      "name": "tic-filtered-mast-spoc",
+      "target": ["TIC", "261136679"],
+      "providers": "tesscut,mast",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "261136679",
+        "target_source_contains": "mast.catalogs.filtered.tic.http",
+        "min_sectors": 20,
+        "product_families_contains": ["SPOC", "TESSCut"],
+        "product_summary_min": {
+          "n_preextracted_products_with_file_uri": 1,
+          "n_products_with_file_uri": 1
+        },
+        "product_summary_contains": {
+          "fetch_reference_kinds": ["mast_data_uri"],
+          "file_product_subgroups": ["LC"]
+        },
+        "fetch_product": "spoc",
+        "fetch_plan_min": {
+          "n_selected_product_references": 1
+        },
+        "selected_references_contains": {
+          "file_role": ["lightcurve"],
+          "fetch_reference_kind": ["mast_data_uri"]
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "ok"
+        },
+        "no_errors": true
+      },
+      "fetch_smoke": {
+        "product": "spoc",
+        "file_role": "lightcurve",
+        "max_files": 1,
+        "normalize_csv": true,
+        "expect_min_rows": 1,
+        "expect_columns": ["time_btjd", "flux", "quality", "raw_sap_flux", "raw_pdcsap_flux"]
+      }
+    },
+    {
+      "name": "tic-gaia-crowding",
+      "target": ["TIC", "261136679"],
+      "providers": "tesscut,gaia",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "261136679",
+        "target_source_contains": "mast.catalogs.filtered.tic.http",
+        "min_sectors": 20,
+        "fetch_product": "cutout",
+        "crowding_summary_min": {
+          "n_neighbors": 0
+        },
+        "crowding_summary_contains": {
+          "risk": ["low", "medium", "high"]
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "skipped",
+          "Gaia neighbors": "ok"
+        },
+        "no_errors": true
+      }
+    },
+    {
+      "name": "tic-toi-known-object",
+      "target": ["TIC", "150428135"],
+      "providers": "tesscut,toi",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "150428135",
+        "target_source_contains": "mast.catalogs.filtered.tic.http",
+        "min_sectors": 1,
+        "fetch_product": "cutout",
+        "known_object_summary_min": {
+          "n_matches": 1
+        },
+        "known_object_summary_contains": {
+          "catalogs": ["TOI"]
+        },
+        "toi_summary_min": {
+          "n_matches": 1
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "skipped",
+          "TOI catalog": "ok"
+        },
+        "no_errors": true
+      }
+    },
+    {
+      "name": "toi-name-resolution",
+      "target": ["TOI-700"],
+      "providers": "tesscut,toi",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "150428135",
+        "target_source_contains": "nasa.exoplanetarchive.toi.tap",
+        "min_sectors": 1,
+        "fetch_product": "cutout",
+        "known_object_summary_min": {
+          "n_matches": 1
+        },
+        "known_object_summary_contains": {
+          "catalogs": ["TOI"]
+        },
+        "toi_summary_min": {
+          "n_matches": 1
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "skipped",
+          "TOI catalog": "ok"
+        },
+        "no_errors": true
+      }
+    },
+    {
+      "name": "qlp-explicit-availability",
+      "target": ["TIC", "21278334"],
+      "providers": "tesscut,mast",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "21278334",
+        "min_sectors": 1,
+        "product_families_contains": ["QLP", "TESSCut"],
+        "product_summary_min": {
+          "n_preextracted_products_with_file_uri": 1,
+          "n_products_with_file_uri": 1
+        },
+        "product_summary_contains": {
+          "cadence_sec": [200, 600, 1800],
+          "fetch_reference_kinds": ["mast_data_uri"]
+        },
+        "fetch_product": "qlp",
+        "fetch_plan_min": {
+          "n_selected_product_references": 1
+        },
+        "selected_references_contains": {
+          "file_role": ["lightcurve"],
+          "fetch_reference_kind": ["mast_data_uri"]
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "ok",
+          "MAST QLP": "ok"
+        },
+        "no_errors": true
+      },
+      "fetch_smoke": {
+        "product": "qlp",
+        "file_role": "lightcurve",
+        "sectors": [26],
+        "max_files": 1,
+        "normalize_csv": true,
+        "expect_min_rows": 1,
+        "expect_columns": ["time_btjd", "flux", "quality", "raw_sap_flux", "raw_kspsap_flux", "raw_kspsap_flux_err"]
+      }
+    },
+    {
+      "name": "tess-spoc-explicit-availability",
+      "target": ["TIC", "7547522"],
+      "providers": "tesscut,mast",
+      "best_for": "general",
+      "expect": {
+        "tic_id": "7547522",
+        "min_sectors": 1,
+        "product_families_contains": ["TESS-SPOC", "TESSCut"],
+        "product_summary_min": {
+          "n_preextracted_products_with_file_uri": 1,
+          "n_products_with_file_uri": 1
+        },
+        "product_summary_contains": {
+          "cadence_sec": [200, 600, 1800],
+          "fetch_reference_kinds": ["mast_data_uri"]
+        },
+        "fetch_product": "tess-spoc",
+        "fetch_plan_min": {
+          "n_selected_product_references": 1
+        },
+        "selected_references_contains": {
+          "file_role": ["lightcurve"],
+          "fetch_reference_kind": ["mast_data_uri"]
+        },
+        "provider_status": {
+          "TESSCut": "ok",
+          "MAST observations": "ok",
+          "MAST TESS-SPOC": "ok"
+        },
+        "no_errors": true
+      },
+      "fetch_smoke": {
+        "product": "tess-spoc",
+        "file_role": "lightcurve",
+        "sectors": [14],
+        "max_files": 1,
+        "normalize_csv": true,
+        "expect_min_rows": 1,
+        "expect_columns": ["time_btjd", "flux", "quality", "raw_sap_flux", "raw_pdcsap_flux", "raw_pdcsap_flux_err"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tess-tools"
+version = "0.1.0"
+description = "Small command-line tools for discovering and fetching TESS observation products."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Exo project contributors" },
+]
+keywords = ["astronomy", "tess", "mast", "light-curves", "exoplanets"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Astronomy",
+]
+dependencies = []
+
+[project.optional-dependencies]
+mast = [
+  "astroquery",
+  "astropy",
+]
+fits = [
+  "astropy",
+]
+
+[project.scripts]
+tess-where = "tess_tools.cli:main"
+tess-where-live-validate = "tess_tools.live_validate:main"
+tess-fetch = "tess_tools.fetch:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tess_tools*"]

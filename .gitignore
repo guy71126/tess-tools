@@ -1,0 +1,8 @@
+.cache/
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.venv/
+.release-test-venv/
