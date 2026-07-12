@@ -1,0 +1,46 @@
+name: Bug report
+description: Report incorrect behavior or a command failure.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Remove credentials and private data before submitting logs or manifests.
+  - type: input
+    id: version
+    attributes:
+      label: TESS Tools version
+      placeholder: "0.1.0 or commit hash"
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Python version and operating system
+      placeholder: "Python 3.12.4 on Windows 11"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and target
+      description: Include a public TIC ID or coordinates when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Redacted output or manifest excerpt
+      render: shell

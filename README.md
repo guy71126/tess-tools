@@ -1,10 +1,31 @@
 # TESS Tools
 
+[![CI](https://github.com/guy71126/tess-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/guy71126/tess-tools/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Small command-line tools for making TESS observation metadata and data-product access less fragmented.
 
 The first command is `tess-where`, which answers what TESS sectors and public products appear to exist for a TIC or sky position. It is metadata-first and does not download large light-curve files.
 
 `tess-fetch` is the companion command that consumes `tess-where` JSON and downloads selected file references. It is intentionally narrow at this stage: it fetches selected products already discovered by `tess-where`.
+
+## Installation
+
+TESS Tools requires Python 3.10 or newer. Until the first PyPI release, install directly from GitHub:
+
+```powershell
+python -m pip install "tess-tools[mast,fits] @ git+https://github.com/guy71126/tess-tools.git"
+tess-where --help
+tess-fetch --help
+```
+
+The base package has no required third-party dependencies. Install the `mast` extra for astroquery-backed fallbacks and the `fits` extra for FITS normalization and TESSCut light-curve extraction.
+
+After the first PyPI release, the normal installation command will be:
+
+```powershell
+python -m pip install "tess-tools[mast,fits]"
+```
 
 ## Development Usage
 

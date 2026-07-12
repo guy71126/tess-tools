@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-  { name = "Exo project contributors" },
+  { name = "guy71126" },
 ]
 keywords = ["astronomy", "tess", "mast", "light-curves", "exoplanets"]
 classifiers = [
@@ -27,6 +27,12 @@ classifiers = [
   "Topic :: Scientific/Engineering :: Astronomy",
 ]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/guy71126/tess-tools"
+Repository = "https://github.com/guy71126/tess-tools"
+Issues = "https://github.com/guy71126/tess-tools/issues"
+Changelog = "https://github.com/guy71126/tess-tools/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 mast = [

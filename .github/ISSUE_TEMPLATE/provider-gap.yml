@@ -1,0 +1,49 @@
+name: Provider or product coverage gap
+description: Report a missing, unavailable, or misclassified TESS product.
+title: "[Provider]: "
+labels: [provider-coverage]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: Public target
+      description: TIC ID, TOI identifier, or coordinates.
+    validations:
+      required: true
+  - type: input
+    id: sector
+    attributes:
+      label: Sector or sectors
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider or collection
+      options:
+        - SPOC
+        - QLP
+        - TESS-SPOC
+        - TESSCut
+        - Other MAST HLSP
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected product and evidence
+      description: Link to a public MAST result or identify the expected filename/product family.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command used
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Redacted result
+    validations:
+      required: true
